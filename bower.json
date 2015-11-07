@@ -1,18 +1,24 @@
 {
   "name": "gone.girl",
-  "description": "",
-  "main": "index.js",
+  "private": true,
   "authors": [
     "GimYoungPhil <youngphil.gim@gmail.com>"
   ],
-  "license": "ISC",
-  "homepage": "https://github.com/GimYoungPhil/gone.girl",
-  "moduleType": [],
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
-  ]
+  "dependencies": {
+    "polymer": "Polymer/polymer#~1.2.1",
+    "font-roboto": "polymerelements/font-roboto#~1.0.1",
+    "iron-flex-layout": "PolymerElements/iron-flex-layout#~1.0.5",
+    "iron-icons": "PolymerElements/iron-icons#~1.0.4",
+    "iron-pages": "PolymerElements/iron-pages#~1.0.3",
+    "iron-selector": "PolymerElements/iron-selector#~1.0.8",
+    "paper-drawer-panel": "PolymerElements/paper-drawer-panel#~1.0.4",
+    "paper-icon-button": "PolymerElements/paper-icon-button#~1.0.5",
+    "paper-toolbar": "PolymerElements/paper-toolbar#~1.0.4",
+    "paper-styles": "PolymerElements/paper-styles#~1.0.12",
+    "paper-header-panel": "PolymerElements/paper-header-panel#~1.0.5",
+    "paper-menu": "PolymerElements/paper-menu#~1.1.1",
+    "paper-item": "PolymerElements/paper-item#~1.0.6",
+    "paper-material": "PolymerElements/paper-material#~1.0.3",
+    "page": "visionmedia/page.js#~1.6.4"
+  }
 }

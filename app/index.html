@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gone Girl</title>
+
+  <link rel="stylesheet" href="/styles/main.css">
+
+  <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+  <link rel="import" href="elements/elements.html">
+
+  <style is="custom-style" include="shared-styles"></style>
+</head>
+
+<body unresolved class="fullbleed layout vertical">
+
+  <template is="dom-bind" id="app">
+
+    <paper-drawer-panel id="paperDrawerPanel">
+
+      <paper-header-panel drawer>
+
+        <paper-toolbar id="drawerToolbar">
+          <div class="paper-font-title">Menu</div>
+        </paper-toolbar>
+
+        <paper-menu class="list" attr-for-selected="data-route" selected="[[route]]">
+          <a data-route="home" href="/" on-click="onDataRouteClick">
+            <iron-icon icon="home"></iron-icon>
+            <span>Home</span>
+          </a>
+
+          <a data-route="dogs" href="/dogs" on-click="onDataRouteClick">
+            <iron-icon icon="info"></iron-icon>
+            <span>Dogs</span>
+          </a>
+
+          <a data-route="cats" href="/cats" on-click="onDataRouteClick">
+            <iron-icon icon="info"></iron-icon>
+            <span>Cats</span>
+          </a>
+        </paper-menu>
+
+      </paper-header-panel>
+
+      <paper-header-panel main mode="waterfall">
+
+        <paper-toolbar class="medium-tall">
+          <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
+
+          <div class="middle middle-container center horizontal layout">
+            <div class="app-name">The future of the web today</div>
+          </div>
+        </paper-toolbar>
+
+        <div class="content fit">
+
+          <iron-pages attr-for-selected="data-route" selected="{{route}}">
+
+            <section data-route="home">
+              home
+            </section>
+
+            <section data-route="dogs">
+              dogs
+            </section>
+
+            <section data-route="cats">
+              cats
+            </section>
+
+          </iron-pages>
+
+        </div>
+
+      </paper-header-panel>
+
+    </paper-drawer-panel>
+
+  </template>
+
+  <script src="scripts/app.js"></script>
+
+</body>
+
+</html>

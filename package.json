@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "cd app && python -m SimpleHTTPServer 8000",
+    "build": "vulcanize ./app/index.html > ./dist/build.html"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,4 @@
   "bugs": {
     "url": "https://github.com/GimYoungPhil/gone.girl/issues"
   },
-  "homepage": "https://github.com/GimYoungPhil/gone.girl#readme"
 }
