@@ -23,6 +23,8 @@
   // See https://github.com/Polymer/polymer/issues/1381
   window.addEventListener('WebComponentsReady', function() {
     // imports are loaded and elements have been registered
+
+    getBlogPosts();
   });
 
   // Main area's paper-scroll-header-panel custom condensing transformation of
@@ -61,6 +63,38 @@
   // Scroll page to top and expand header
   app.scrollPageToTop = function() {
     document.getElementById('mainContainer').scrollTop = 0;
+  };
+
+  var createXhr = function(method, url) {
+    var xhr = new XMLHttpRequest();
+
+    if (!('withCredentials' in xhr)) {
+      alert('Browser does not support CORS.');
+      return;
+    }
+
+    xhr.onerror = function() {
+      alert('There was an error.');
+    };
+
+    xhr.open(method, url, true);
+
+    return xhr;
+  };
+
+
+  var getBlogPosts = function() {
+    var xhr = createXhr('GET', 'http://127.0.0.1:3000/api');
+    xhr.setRequestHeader('Timezone-Offset', new Date().getTimezoneOffset());
+    xhr.setRequestHeader('Sample-Source', 'CORS in Action');
+    // xhr.setRequestHeader('Cache-Control', 'max-age=100');
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.onload = function() {
+      var data = JSON.parse(xhr.responseText);
+
+      console.log(data);
+    };
+    xhr.send();
   };
 
 })(document);

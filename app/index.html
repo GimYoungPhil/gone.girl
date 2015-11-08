@@ -22,10 +22,10 @@
 
     <paper-drawer-panel id="paperDrawerPanel">
 
-      <paper-header-panel drawer>
+      <paper-header-panel drawer mode="seamed">
 
-        <paper-toolbar id="drawerToolbar">
-          <div class="paper-font-title">Menu</div>
+        <paper-toolbar id="drawerToolbar" class="medium-tall">
+          <div class="title bottom paper-font-title">Menu</div>
         </paper-toolbar>
 
         <paper-menu class="list" attr-for-selected="data-route" selected="[[route]]">
@@ -49,10 +49,10 @@
 
       <paper-header-panel main mode="waterfall">
 
-        <paper-toolbar class="medium-tall">
+        <paper-toolbar id="mainToolbar" class="medium-tall">
           <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
 
-          <div class="middle middle-container center horizontal layout">
+          <div class="bottom bottom-container center horizontal layout">
             <div class="app-name">The future of the web today</div>
           </div>
         </paper-toolbar>
@@ -70,7 +70,9 @@
             </section>
 
             <section data-route="cats">
-              cats
+              <template is="dom-repeat" items="{{groups}}" as="group">
+                <span>{{group.name}}</span>
+              </template>
             </section>
 
           </iron-pages>
@@ -81,8 +83,27 @@
 
     </paper-drawer-panel>
 
-  </template>
+<!--
+    <iron-ajax
+      auto
+      url="http://openapi.animal.go.kr/openapi/service/rest/abandonmentPublicSrvc/abandonmentPublic"
+      params='{"bgnde":"20151101", "endde":"20151108", "ServiceKey":"Z3bYXoHuTv1ttp4LF7sHs8H+eoEmVB+bLwO9WCYTD5cenWgZuBCxOiQiTmQIJBb9bvG1Vms1673ukVKMpxB50g=="}'
+      handle-as="xml"
+      with-credentials
+      last-response="{{abandonmentGirls}}"></iron-ajax>
+ -->
 
+    <!--
+    <iron-ajax
+      auto
+      url="http://the-idol-back-end.herokuapp.com/api/groups"
+      params='{"bgnde":"20151101", "endde":"2015 1108"}'
+      handle-as="json"
+      last-response="{{groups}}"></iron-ajax>
+   -->
+
+  </template>
+  <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
   <script src="scripts/app.js"></script>
 
 </body>

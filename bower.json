@@ -19,6 +19,7 @@
     "paper-menu": "PolymerElements/paper-menu#~1.1.1",
     "paper-item": "PolymerElements/paper-item#~1.0.6",
     "paper-material": "PolymerElements/paper-material#~1.0.3",
-    "page": "visionmedia/page.js#~1.6.4"
+    "page": "visionmedia/page.js#~1.6.4",
+    "iron-ajax": "PolymerElements/iron-ajax#~1.0.9"
   }
 }
