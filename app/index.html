@@ -83,15 +83,13 @@
 
     </paper-drawer-panel>
 
-<!--
     <iron-ajax
       auto
-      url="http://openapi.animal.go.kr/openapi/service/rest/abandonmentPublicSrvc/abandonmentPublic"
-      params='{"bgnde":"20151101", "endde":"20151108", "ServiceKey":"Z3bYXoHuTv1ttp4LF7sHs8H+eoEmVB+bLwO9WCYTD5cenWgZuBCxOiQiTmQIJBb9bvG1Vms1673ukVKMpxB50g=="}'
-      handle-as="xml"
+      url="http://localhost:3000/api"
+      handle-as="json"
       with-credentials
+      content-type="application/json"
       last-response="{{abandonmentGirls}}"></iron-ajax>
- -->
 
     <!--
     <iron-ajax

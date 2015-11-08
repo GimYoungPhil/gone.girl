@@ -24,7 +24,7 @@
   window.addEventListener('WebComponentsReady', function() {
     // imports are loaded and elements have been registered
 
-    getBlogPosts();
+    // getData();
   });
 
   // Main area's paper-scroll-header-panel custom condensing transformation of
@@ -83,7 +83,7 @@
   };
 
 
-  var getBlogPosts = function() {
+  var getData = function() {
     var xhr = createXhr('GET', 'http://127.0.0.1:3000/api');
     xhr.setRequestHeader('Timezone-Offset', new Date().getTimezoneOffset());
     xhr.setRequestHeader('Sample-Source', 'CORS in Action');
