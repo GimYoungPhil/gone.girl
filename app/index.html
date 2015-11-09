@@ -25,7 +25,7 @@
       <paper-header-panel drawer mode="seamed">
 
         <paper-toolbar id="drawerToolbar" class="medium-tall">
-          <div class="title bottom paper-font-title">Menu</div>
+          <div class="title bottom paper-font-title">나를 찾아줘</div>
         </paper-toolbar>
 
         <paper-menu class="list" attr-for-selected="data-route" selected="[[route]]">
@@ -34,14 +34,14 @@
             <span>Home</span>
           </a>
 
-          <a data-route="dogs" href="/dogs" on-click="onDataRouteClick">
-            <iron-icon icon="info"></iron-icon>
-            <span>멍멍</span>
-          </a>
-
           <a data-route="cats" href="/cats" on-click="onDataRouteClick">
             <iron-icon icon="info"></iron-icon>
             <span>야옹</span>
+          </a>
+
+          <a data-route="dogs" href="/dogs" on-click="onDataRouteClick">
+            <iron-icon icon="info"></iron-icon>
+            <span>멍멍</span>
           </a>
 
           <a data-route="ets" href="/etc" on-click="onDataRouteClick">

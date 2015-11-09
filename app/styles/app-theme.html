@@ -4,9 +4,9 @@
   /* Application theme */
 
   :root {
-    --dark-primary-color: #303F9F;
-    --default-primary-color: #3F51B5;
-    --light-primary-color: #C5CAE9;
+    --dark-primary-color: #455A64;
+    --default-primary-color: #607D8B;
+    --light-primary-color: #CFD8DC;
     --text-primary-color: #ffffff; /*text/icons*/
     --accent-color: #FF4081;
     --primary-background-color: #c5cae9;
@@ -18,24 +18,33 @@
     /* Components */
 
     /* paper-drawer-panel */
-    --drawer-menu-color: #ffffff;
-    --drawer-border-color: 1px solid #ccc;
     --drawer-toolbar-border-color: 1px solid rgba(0, 0, 0, 0.22);
 
     /* paper-menu */
-    --paper-menu-background-color: #fff;
-    --menu-link-color: #111111;
+    --paper-menu-background-color: #607D8B;
+    --menu-link-color: #ffffff;
   }
 
   /* General styles */
 
   #drawerToolbar {
-    color: var(--secondary-text-color);
-    background-color: var(--drawer-menu-color);
     border-bottom: var(--drawer-toolbar-border-color);
   }
 
-  paper-scroll-header-panel {
+  #mainToolbar {
+    color: var(--primary-text-color);
+    background-color: #ffffff;
+    border-bottom: var(--drawer-toolbar-border-color);
+  }
+
+  paper-drawer-panel {
+    --paper-drawer-panel-left-drawer-container: {
+      background-color: var(--default-primary-color);
+      color: var(--text-primary-color);
+    };
+  }
+
+  paper-header-panel {
     height: 100%;
   }
 
@@ -54,7 +63,7 @@
   }
 
   .paper-menu > .iron-selected {
-    color: var(--default-primary-color);
+    background-color: var(--dark-primary-color);
   }
 
   paper-menu a {
