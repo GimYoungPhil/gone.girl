@@ -65,22 +65,26 @@
     document.getElementById('mainContainer').scrollTop = 0;
   };
 
-  var createXhr = function(method, url) {
-    var xhr = new XMLHttpRequest();
-
-    if (!('withCredentials' in xhr)) {
-      alert('Browser does not support CORS.');
-      return;
-    }
-
-    xhr.onerror = function() {
-      alert('There was an error.');
-    };
-
-    xhr.open(method, url, true);
-
-    return xhr;
+  app._equal = function(value1, value2) {
+    return value1 === value2;
   };
+
+  // var createXhr = function(method, url) {
+  //   var xhr = new XMLHttpRequest();
+  //
+  //   if (!('withCredentials' in xhr)) {
+  //     alert('Browser does not support CORS.');
+  //     return;
+  //   }
+  //
+  //   xhr.onerror = function() {
+  //     alert('There was an error.');
+  //   };
+  //
+  //   xhr.open(method, url, true);
+  //
+  //   return xhr;
+  // };
 
 
   // var getData = function() {
