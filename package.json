@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "cd app && python -m SimpleHTTPServer 8000",
-    "build": ".."
+    "build": "vulcanize ./app/index.html > ./deploy/index.html"
   },
   "repository": {
     "type": "git",
