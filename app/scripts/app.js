@@ -83,18 +83,18 @@
   };
 
 
-  var getData = function() {
-    var xhr = createXhr('GET', 'http://127.0.0.1:3000/api');
-    xhr.setRequestHeader('Timezone-Offset', new Date().getTimezoneOffset());
-    xhr.setRequestHeader('Sample-Source', 'CORS in Action');
-    // xhr.setRequestHeader('Cache-Control', 'max-age=100');
-    xhr.setRequestHeader("Content-Type", "application/json");
-    xhr.onload = function() {
-      var data = JSON.parse(xhr.responseText);
-
-      console.log(data);
-    };
-    xhr.send();
-  };
+  // var getData = function() {
+  //   var xhr = createXhr('GET', 'http://127.0.0.1:3000/api');
+  //   xhr.setRequestHeader('Timezone-Offset', new Date().getTimezoneOffset());
+  //   xhr.setRequestHeader('Sample-Source', 'CORS in Action');
+  //   // xhr.setRequestHeader('Cache-Control', 'max-age=100');
+  //   xhr.setRequestHeader("Content-Type", "application/json");
+  //   xhr.onload = function() {
+  //     var data = JSON.parse(xhr.responseText);
+  //
+  //     console.log(data);
+  //   };
+  //   xhr.send();
+  // };
 
 })(document);
