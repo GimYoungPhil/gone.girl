@@ -29,9 +29,9 @@
         </paper-toolbar>
 
         <paper-menu class="list" attr-for-selected="data-route" selected="[[route]]">
-          <a data-route="home" href="/" on-click="onDataRouteClick">
+          <a data-route="recent" href="/" on-click="onDataRouteClick">
             <iron-icon icon="home"></iron-icon>
-            <span>Home</span>
+            <span>오늘!</span>
           </a>
 
           <a data-route="cats" href="/cats" on-click="onDataRouteClick">
@@ -44,7 +44,7 @@
             <span>멍멍</span>
           </a>
 
-          <a data-route="ets" href="/etc" on-click="onDataRouteClick">
+          <a data-route="ets" href="/etcs" on-click="onDataRouteClick">
             <iron-icon icon="info"></iron-icon>
             <span>기타</span>
           </a>
@@ -66,32 +66,57 @@
 
           <iron-pages attr-for-selected="data-route" selected="{{route}}">
 
-            <template is="dom-if" if="{{_equal(route, 'home')}}">
-
-              <section data-route="home">
+            <template is="dom-if" if="{{_equal(route, 'recent')}}">
+              <section data-route="recent">
 
                 <two-columns-grid column-width="396" gutter="8">
-                  <template is="dom-repeat" items="{{pets}}" as="pet">
+                  <template is="dom-repeat" items="{{recent.items.item}}" as="pet">
                     <a is="girl-thumbnail" class="article-headline" girl="{{pet}}"
                           href="#/pets/detail/"></a>
                   </template>
                 </two-columns-grid>
 
               </section>
-
             </template>
 
-            <section data-route="dogs">
-              <template is="dom-repeat" items="{{dogs}}" as="dog">
-                <span>{{dog.kindCd}}</span>
-              </template>
-            </section>
+            <template is="dom-if" if="{{_equal(route, 'cats')}}">
+              <section data-route="cats">
 
-            <section data-route="cats">
-              <template is="dom-repeat" items="{{cats}}" as="cat">
-                <span>{{cat.kindCd}}</span>
-              </template>
-            </section>
+                <two-columns-grid column-width="396" gutter="8">
+                  <template is="dom-repeat" items="{{cats.items.item}}" as="cat">
+                    <a is="girl-thumbnail" class="article-headline" girl="{{cat}}"
+                          href="#/cats/detail/"></a>
+                  </template>
+                </two-columns-grid>
+
+              </section>
+            </template>
+
+            <template is="dom-if" if="{{_equal(route, 'dogs')}}">
+              <section data-route="dogs">
+
+                <two-columns-grid column-width="396" gutter="8">
+                  <template is="dom-repeat" items="{{dogs.items.item}}" as="dog">
+                    <a is="girl-thumbnail" class="article-headline" girl="{{dog}}"
+                          href="#/dogs/detail/"></a>
+                  </template>
+                </two-columns-grid>
+
+              </section>
+            </template>
+
+            <template is="dom-if" if="{{_equal(route, 'etcs')}}">
+              <section data-route="etcs">
+
+                <two-columns-grid column-width="396" gutter="8">
+                  <template is="dom-repeat" items="{{etcs.items.item}}" as="etc">
+                    <a is="girl-thumbnail" class="article-headline" girl="{{etc}}"
+                          href="#/etcs/detail/"></a>
+                  </template>
+                </two-columns-grid>
+
+              </section>
+            </template>
 
           </iron-pages>
 
@@ -103,17 +128,23 @@
 
     <iron-ajax
       auto
-      url="http://localhost:3000/api"
-      params='{"type":"recent", "bgnde":"20151101", "endde":"20151108"}'
+      url="http://localhost:3000/api/recent"
       handle-as="json"
       with-credentials
       content-type="application/json"
-      last-response="{{pets}}"></iron-ajax>
+      last-response="{{recent}}"></iron-ajax>
 
     <iron-ajax
       auto
-      url="http://localhost:3000/api"
-      params='{"type":"dog", "bgnde":"20151101", "endde":"20151108"}'
+      url="http://localhost:3000/api/cats"
+      handle-as="json"
+      with-credentials
+      content-type="application/json"
+      last-response="{{cats}}"></iron-ajax>
+
+    <iron-ajax
+      auto
+      url="http://localhost:3000/api/dogs"
       handle-as="json"
       with-credentials
       content-type="application/json"
@@ -121,21 +152,11 @@
 
     <iron-ajax
       auto
-      url="http://localhost:3000/api"
-      params='{"type":"cat", "bgnde":"20151101", "endde":"20151108"}'
+      url="http://localhost:3000/api/etcs"
       handle-as="json"
       with-credentials
       content-type="application/json"
-      last-response="{{cats}}"></iron-ajax>
-
-    <!--
-    <iron-ajax
-      auto
-      url="http://the-idol-back-end.herokuapp.com/api/groups"
-      params='{"bgnde":"20151101", "endde":"20151108"}'
-      handle-as="json"
-      last-response="{{groups}}"></iron-ajax>
-   -->
+      last-response="{{etcs}}"></iron-ajax>
 
   </template>
 

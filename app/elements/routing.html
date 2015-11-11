@@ -13,15 +13,19 @@
 
     // Routes
     page('/', scrollToTop, function() {
-      app.route = 'home';
+      app.route = 'recent';
+    });
+
+    page('/cats', scrollToTop, function() {
+      app.route = 'cats';
     });
 
     page('/dogs', scrollToTop, function() {
       app.route = 'dogs';
     });
 
-    page('/cats', scrollToTop, function() {
-      app.route = 'cats';
+    page('/etcs', scrollToTop, function() {
+      app.route = 'etcs';
     });
 
     // page('/users/:name', scrollToTop, function(data) {
