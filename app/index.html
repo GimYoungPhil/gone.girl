@@ -71,8 +71,8 @@
 
                 <two-columns-grid column-width="396" gutter="8">
                   <template is="dom-repeat" items="{{recent.items.item}}" as="pet">
-                    <a is="girl-thumbnail" class="article-headline" girl="{{pet}}"
-                          href="#/pets/detail/"></a>
+                    <a is="girl-thumb" class="article-headline" girl="{{pet}}"
+                          href="/recent/{{pet.desertionNo}}/"></a>
                   </template>
                 </two-columns-grid>
 
@@ -84,8 +84,8 @@
 
                 <two-columns-grid column-width="396" gutter="8">
                   <template is="dom-repeat" items="{{cats.items.item}}" as="cat">
-                    <a is="girl-thumbnail" class="article-headline" girl="{{cat}}"
-                          href="#/cats/detail/"></a>
+                    <a is="girl-thumb" class="article-headline" girl="{{cat}}"
+                          href="/cats/{{cat.desertionNo}}/"></a>
                   </template>
                 </two-columns-grid>
 
@@ -97,8 +97,8 @@
 
                 <two-columns-grid column-width="396" gutter="8">
                   <template is="dom-repeat" items="{{dogs.items.item}}" as="dog">
-                    <a is="girl-thumbnail" class="article-headline" girl="{{dog}}"
-                          href="#/dogs/detail/"></a>
+                    <a is="girl-thumb" class="article-headline" girl="{{dog}}"
+                          href="/dogs/{{dog.desertionNo}}/"></a>
                   </template>
                 </two-columns-grid>
 
@@ -110,10 +110,18 @@
 
                 <two-columns-grid column-width="396" gutter="8">
                   <template is="dom-repeat" items="{{etcs.items.item}}" as="etc">
-                    <a is="girl-thumbnail" class="article-headline" girl="{{etc}}"
-                          href="#/etcs/detail/"></a>
+                    <a is="girl-thumb" class="article-headline" girl="{{etc}}"
+                          href="/etcs/{{etc.desertionNo}}/"></a>
                   </template>
                 </two-columns-grid>
+
+              </section>
+            </template>
+
+            <template is="dom-if" if="{{_equal(route, 'detail')}}">
+              <section data-route="detail">
+
+                <girl-detail name="detail" girl="{{abandonment}}"></girl-detail>
 
               </section>
             </template>
