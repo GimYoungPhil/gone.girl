@@ -1,6 +1,7 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../bower_components/iron-image/iron-image.html">
+<link rel="import" href="../../bower_components/iron-icon/iron-icon.html">
 <link rel="import" href="../../bower_components/paper-fab/paper-fab.html">
 <link rel="import" href="../../bower_components/paper-item/paper-item.html">
 
@@ -91,41 +92,53 @@
       </a>
     </header>
 
-    <div id="full-height-container">
-      <iron-image class="image" preload fade src="{{girl.popfile}}"></iron-image>
-    </div>
 
     <section id="main">
+      <div id="full-height-container">
+        <iron-image class="image" preload fade src="{{girl.popfile}}"></iron-image>
+      </div>
       <paper-item>상태 {{girl.processState}}</paper-item>
       <paper-item>나이 {{girl.age}}</paper-item>
       <paper-item>색상 {{girl.colorCd}}</paper-item>
       <paper-item>체중 {{girl.weight}}</paper-item>
-      <paper-item>성별 {{girl.sexCd}}</paper-item>
-      <paper-item>중성화 {{girl.neuterYn}}</paper-item>
+      <paper-item>성별 {{display('sex', girl.sexCd)}}</paper-item>
+      <paper-item>중성화 {{display('neuter', girl.neuterYn)}}</paper-item>
       <paper-item>품종 {{girl.kindCd}}</paper-item>
       <paper-item>특징 {{girl.specialMark}}</paper-item>
-    </section>
 
-    <table>
-      <thead>
-        <tr>
-          <td>발견장소</td>
-          <td>접수일</td>
-          <td>유기번호</td>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>{{girl.happenPlace}}</td>
-          <td>{{girl.happenDt}}</td>
-          <td>{{girl.desertionNo}}</td>
-        </tr>
-      </tbody>
-    </table>
+      <paper-item>유기번호 {{girl.desertionNo}}</paper-item>
+      <paper-item>접수일 {{girl.happenDt}}</paper-item>
+      <paper-item>발견장소 {{girl.happenPlace}}</paper-item>
+
+      <paper-item>공고번호 {{girl.noticeNo}}</paper-item>
+      <paper-item>공교시작일 {{girl.noticeSdt}}</paper-item>
+      <paper-item>공고종료일 {{girl.noticeEdt}}</paper-item>
+
+      <paper-item>보호소 이름 {{girl.careNm}}</paper-item>
+      <paper-item>보호소 전화번호 {{girl.careTel}}</paper-item>
+      <paper-item>보호소 장소 {{girl.careAddr}}</paper-item>
+
+      <paper-item>관할기관 {{girl.orgNm}}</paper-item>
+      <paper-item>담당자 {{girl.chargeNm}}</paper-item>
+      <paper-item>담당자 전화번호 {{girl.officetel}}</paper-item>
+    </section>
 
   </template>
 
   <script>
+    var STATE_MAP = {
+      sex: {
+        F: '암컷',
+        M: '수컷',
+        Q: '미상'
+      },
+      neuter: {
+        Y: '예',
+        N: '아니오',
+        U: '미상'
+      }
+    };
+
     Polymer({
       is: 'girl-detail',
       properties: {
@@ -140,6 +153,10 @@
 
       girlChanged: function(changeRecord) {
         this.toggleClass('loaded', true);
+      },
+
+      display: function(type, state) {
+        return STATE_MAP[type][state];
       }
 
       // observers: [
