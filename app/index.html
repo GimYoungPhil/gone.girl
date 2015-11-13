@@ -29,22 +29,22 @@
         </paper-toolbar>
 
         <paper-menu class="list" attr-for-selected="data-route" selected="[[route]]">
-          <a data-route="recent" href="/" on-click="onDataRouteClick">
+          <a data-route="recent" href="#/" on-click="onDataRouteClick">
             <iron-icon icon="home"></iron-icon>
             <span>오늘!</span>
           </a>
 
-          <a data-route="cats" href="/cats" on-click="onDataRouteClick">
+          <a data-route="cats" href="#/cats" on-click="onDataRouteClick">
             <iron-icon icon="info"></iron-icon>
             <span>야옹</span>
           </a>
 
-          <a data-route="dogs" href="/dogs" on-click="onDataRouteClick">
+          <a data-route="dogs" href="#/dogs" on-click="onDataRouteClick">
             <iron-icon icon="info"></iron-icon>
             <span>멍멍</span>
           </a>
 
-          <a data-route="ets" href="/etcs" on-click="onDataRouteClick">
+          <a data-route="ets" href="#/etcs" on-click="onDataRouteClick">
             <iron-icon icon="info"></iron-icon>
             <span>기타</span>
           </a>
@@ -55,7 +55,10 @@
       <paper-header-panel main mode="waterfall">
 
         <paper-toolbar id="mainToolbar" class="medium-tall">
-          <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
+          <paper-icon-button icon="menu" paper-drawer-toggle hidden$="{{_equal(route,'detail')}}"></paper-icon-button>
+          <a href="/{{upkind}}"  hidden$="{{!_equal(route, 'detail')}}">
+            <paper-icon-button icon="arrow-back"></paper-icon-button>
+          </a>
 
           <div class="bottom title paper-font-display3">Bottom Title</div>
         </paper-toolbar>
@@ -140,7 +143,7 @@
       content-type="application/json"
       last-response="{{recent}}"></iron-ajax>
 
-    <iron-ajax
+    <!-- <iron-ajax
       auto
       url="http://localhost:3000/api/cats"
       handle-as="json"
@@ -162,7 +165,7 @@
       handle-as="json"
       with-credentials
       content-type="application/json"
-      last-response="{{etcs}}"></iron-ajax>
+      last-response="{{etcs}}"></iron-ajax> -->
 
   </template>
 
