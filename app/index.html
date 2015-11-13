@@ -29,22 +29,22 @@
         </paper-toolbar>
 
         <paper-menu class="list" attr-for-selected="data-route" selected="[[route]]">
-          <a data-route="recent" href="#/" on-click="onDataRouteClick">
+          <a data-route="recent" href="/" on-click="onDataRouteClick">
             <iron-icon icon="home"></iron-icon>
             <span>오늘!</span>
           </a>
 
-          <a data-route="cats" href="#/cats" on-click="onDataRouteClick">
+          <a data-route="cats" href="/cats" on-click="onDataRouteClick">
             <iron-icon icon="info"></iron-icon>
             <span>야옹</span>
           </a>
 
-          <a data-route="dogs" href="#/dogs" on-click="onDataRouteClick">
+          <a data-route="dogs" href="/dogs" on-click="onDataRouteClick">
             <iron-icon icon="info"></iron-icon>
             <span>멍멍</span>
           </a>
 
-          <a data-route="ets" href="#/etcs" on-click="onDataRouteClick">
+          <a data-route="ets" href="z/etcs" on-click="onDataRouteClick">
             <iron-icon icon="info"></iron-icon>
             <span>기타</span>
           </a>
@@ -82,6 +82,19 @@
 
             <template is="dom-if" if="{{_equal(route, 'cats')}}">
               <section data-route="cats">
+                <iron-list items="{{cats.items.item}}">
+                  <template>
+                    <div>
+                      <span>[[item.processState]]</span>
+                    </div>
+                  </template>
+                </iron-list>
+              </section>
+            </template>
+
+            <!--
+            <template is="dom-if" if="{{_equal(route, 'cats')}}">
+              <section data-route="cats">
 
                 <two-columns-grid column-width="396" gutter="8">
                   <template is="dom-repeat" items="{{cats.items.item}}" as="cat">
@@ -105,6 +118,7 @@
 
               </section>
             </template>
+           -->
 
             <template is="dom-if" if="{{_equal(route, 'etcs')}}">
               <section data-route="etcs">
@@ -143,7 +157,7 @@
       content-type="application/json"
       last-response="{{recent}}"></iron-ajax>
 
-    <!-- <iron-ajax
+    <iron-ajax
       auto
       url="http://localhost:3000/api/cats"
       handle-as="json"
@@ -151,6 +165,7 @@
       content-type="application/json"
       last-response="{{cats}}"></iron-ajax>
 
+    <!--
     <iron-ajax
       auto
       url="http://localhost:3000/api/dogs"
