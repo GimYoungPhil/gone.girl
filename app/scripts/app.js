@@ -69,6 +69,12 @@
     return value1 === value2;
   };
 
+  app.handleResponse = function(aa, bb, cc) {
+    console.log(aa);
+    console.log(bb);
+    console.log(cc);
+  };
+
   // var createXhr = function(method, url) {
   //   var xhr = new XMLHttpRequest();
   //

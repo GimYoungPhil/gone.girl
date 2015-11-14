@@ -71,7 +71,7 @@
               <section data-route="home">
 
                 <two-columns-grid column-width="396" gutter="8">
-                  <template is="dom-repeat" items="{{pets}}" as="pet">
+                  <template is="dom-repeat" items="{{pets.items.item}}" as="pet">
                     <a is="girl-thumbnail" class="article-headline" girl="{{pet}}"
                           href="#/pets/detail/"></a>
                   </template>
@@ -110,7 +110,7 @@
       content-type="application/json"
       last-response="{{pets}}"></iron-ajax>
 
-    <iron-ajax
+    <!-- <iron-ajax
       auto
       url="http://localhost:3000/api"
       params='{"type":"dog", "bgnde":"20151101", "endde":"20151108"}'
@@ -126,7 +126,7 @@
       handle-as="json"
       with-credentials
       content-type="application/json"
-      last-response="{{cats}}"></iron-ajax>
+      last-response="{{cats}}"></iron-ajax> -->
 
     <!--
     <iron-ajax
