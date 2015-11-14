@@ -2,7 +2,7 @@
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../bower_components/iron-image/iron-image.html">
 
-<dom-module id="girl-thumbnail">
+<dom-module id="girl-thumb">
 
   <template>
 
@@ -37,13 +37,13 @@
     </style>
 
     <iron-image class="image" preload fade sizing="cover" src="{{girl.popfile}}"></iron-image>
-    <div class="title"><span>{{girl.kindCd}}<span class="age">age {{girl.age}}</span></span></div>
+    <div class="title"><span>{{girl.kindCd}}<span class="age">{{girl.age}}</span></span></div>
 
   </template>
 
   <script>
     Polymer({
-      is: 'girl-thumbnail',
+      is: 'girl-thumb',
       extends: 'a',
       properties: {
         girl: Object

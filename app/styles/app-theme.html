@@ -4,9 +4,9 @@
   /* Application theme */
 
   :root {
-    --dark-primary-color: #303F9F;
-    --default-primary-color: #3F51B5;
-    --light-primary-color: #C5CAE9;
+    --dark-primary-color: #455A64;
+    --default-primary-color: #607D8B;
+    --light-primary-color: #CFD8DC;
     --text-primary-color: #ffffff; /*text/icons*/
     --accent-color: #FF4081;
     --primary-background-color: #c5cae9;
@@ -18,24 +18,36 @@
     /* Components */
 
     /* paper-drawer-panel */
-    --drawer-menu-color: #ffffff;
-    --drawer-border-color: 1px solid #ccc;
     --drawer-toolbar-border-color: 1px solid rgba(0, 0, 0, 0.22);
 
     /* paper-menu */
-    --paper-menu-background-color: #fff;
-    --menu-link-color: #111111;
+    --paper-menu-background-color: #607D8B;
+    --menu-link-color: #ffffff;
   }
 
   /* General styles */
 
   #drawerToolbar {
-    color: var(--secondary-text-color);
-    background-color: var(--drawer-menu-color);
     border-bottom: var(--drawer-toolbar-border-color);
+    font-size: 60px;
   }
 
-  paper-scroll-header-panel {
+  #mainToolbar {
+    color: var(--primary-text-color);
+    background-color: #ffffff;
+    border-bottom: var(--drawer-toolbar-border-color);
+    @apply(--layout-center-center);
+  }
+
+
+  paper-drawer-panel {
+    --paper-drawer-panel-left-drawer-container: {
+      background-color: var(--default-primary-color);
+      color: var(--text-primary-color);
+    };
+  }
+
+  paper-header-panel {
     height: 100%;
   }
 
@@ -54,7 +66,7 @@
   }
 
   .paper-menu > .iron-selected {
-    color: var(--default-primary-color);
+    background-color: var(--dark-primary-color);
   }
 
   paper-menu a {
@@ -79,34 +91,18 @@
     padding: 0 16px;
   }
 
-  paper-toolbar.tall .app-name {
-    font-size: 40px;
-    font-weight: 300;
-    /* Required for main area's paper-scroll-header-panel custom condensing transformation */
-    -webkit-transform-origin: left center;
-    transform-origin: left center;
-  }
 
-  #mainToolbar .middle-container  {
-    height: 100%;
-    margin-left: 48px;
-  }
-
-  #mainToolbar:not(.tall) .middle {
-    font-size: 18px;
-    padding-bottom: 0;
-  }
-
-  #mainToolbar .bottom {
-    margin-left: 48px;
-    /* Required for main area's paper-scroll-header-panel custom condensing transformation */
-    -webkit-transform-origin: left center;
-    transform-origin: left center;
-  }
 
   /* Height of the scroll area */
   .content {
     height: 900px;
+  }
+
+
+  girl-detail {
+    max-width: 736px;
+    margin: 64px auto;
+    background-color: #fff;
   }
 
   /* Breakpoints */
