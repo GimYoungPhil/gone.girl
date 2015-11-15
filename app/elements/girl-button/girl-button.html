@@ -1,0 +1,30 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-fab/paper-fab.html">
+
+<link rel="import" href="../app-icons.html">
+
+<dom-module id="girl-button">
+  <template>
+    <paper-fab icon="add" on-click="handleResponse"></paper-fab>
+  </template>
+  <script>
+    Polymer({
+
+      is: 'girl-button',
+
+      properties: {
+
+        count: {
+          type: Number,
+          notify: true,
+          value: 1
+        }
+      },
+
+      handleResponse: function() {
+        var count = this.count + 1;
+        this.set('count', count);
+      }
+    });
+  </script>
+</dom-module>

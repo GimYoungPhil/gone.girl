@@ -52,6 +52,11 @@
     Polymer.Base.transform('scale(' + scaleMiddle + ') translateZ(0)', appName);
   });
 
+  addEventListener('content-scroll', function(e) {
+    var detail = e.detail;
+    console.log(detail);
+  });
+
   // Close drawer after menu item is selected if drawerPanel is narrow
   app.onDataRouteClick = function() {
     var drawerPanel = document.querySelector('#paperDrawerPanel');
@@ -69,42 +74,9 @@
     return value1 === value2;
   };
 
-  app.handleResponse = function(aa, bb, cc) {
-    console.log(aa);
-    console.log(bb);
-    console.log(cc);
+  app.handleResponse = function(event, element) {
+    console.log(event.detail.response);
+
   };
-
-  // var createXhr = function(method, url) {
-  //   var xhr = new XMLHttpRequest();
-  //
-  //   if (!('withCredentials' in xhr)) {
-  //     alert('Browser does not support CORS.');
-  //     return;
-  //   }
-  //
-  //   xhr.onerror = function() {
-  //     alert('There was an error.');
-  //   };
-  //
-  //   xhr.open(method, url, true);
-  //
-  //   return xhr;
-  // };
-
-
-  // var getData = function() {
-  //   var xhr = createXhr('GET', 'http://127.0.0.1:3000/api');
-  //   xhr.setRequestHeader('Timezone-Offset', new Date().getTimezoneOffset());
-  //   xhr.setRequestHeader('Sample-Source', 'CORS in Action');
-  //   // xhr.setRequestHeader('Cache-Control', 'max-age=100');
-  //   xhr.setRequestHeader("Content-Type", "application/json");
-  //   xhr.onload = function() {
-  //     var data = JSON.parse(xhr.responseText);
-  //
-  //     console.log(data);
-  //   };
-  //   xhr.send();
-  // };
 
 })(document);

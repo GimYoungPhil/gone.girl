@@ -25,6 +25,8 @@
     "paper-card": "PolymerElements/paper-card#~1.0.7",
     "paper-item": "PolymerElements/paper-item#~1.0.6",
     "paper-fab": "PolymerElements/paper-fab#~1.0.6",
-    "page": "visionmedia/page.js#~1.6.4"
+    "page": "visionmedia/page.js#~1.6.4",
+    "underscore": "~1.8.3",
+    "moment": "~2.10.6"
   }
 }

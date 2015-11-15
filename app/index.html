@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Gone Girl</title>
+  <title>나를 찾아줘</title>
 
   <link rel="stylesheet" href="/styles/main.css">
 
@@ -18,6 +18,7 @@
 
 <body unresolved class="fullbleed layout vertical">
 
+
   <template is="dom-bind" id="app">
 
     <paper-drawer-panel id="paperDrawerPanel">
@@ -29,7 +30,7 @@
         </paper-toolbar>
 
         <paper-menu class="list" attr-for-selected="data-route" selected="[[route]]">
-          <a data-route="recent" href="/" on-click="onDataRouteClick">
+          <a data-route="today" href="/" on-click="onDataRouteClick">
             <iron-icon icon="home"></iron-icon>
             <span>오늘!</span>
           </a>
@@ -44,7 +45,7 @@
             <span>멍멍</span>
           </a>
 
-          <a data-route="ets" href="z/etcs" on-click="onDataRouteClick">
+          <a data-route="ets" href="/etcs" on-click="onDataRouteClick">
             <iron-icon icon="info"></iron-icon>
             <span>기타</span>
           </a>
@@ -67,41 +68,32 @@
 
           <iron-pages attr-for-selected="data-route" selected="{{route}}">
 
-            <template is="dom-if" if="{{_equal(route, 'recent')}}">
-              <section data-route="recent">
+            <template is="dom-if" if="{{_equal(route, 'today')}}">
+              <section data-route="today">
 
                 <two-columns-grid column-width="396" gutter="8">
-                  <template is="dom-repeat" items="{{recent.items.item}}" as="pet">
+                  <template is="dom-repeat" items="{{today}}" as="pet">
                     <a is="girl-thumb" class="article-headline" girl="{{pet}}"
-                          href="/recent/{{pet.desertionNo}}/"></a>
+                          href="/today/{{pet.desertionNo}}/"></a>
                   </template>
                 </two-columns-grid>
 
+                <girl-button count="{{todayNo}}"></girl-button>
+
               </section>
             </template>
 
-            <template is="dom-if" if="{{_equal(route, 'cats')}}">
-              <section data-route="cats">
-                <iron-list items="{{cats.items.item}}">
-                  <template>
-                    <div>
-                      <span>[[item.processState]]</span>
-                    </div>
-                  </template>
-                </iron-list>
-              </section>
-            </template>
-
-            <!--
             <template is="dom-if" if="{{_equal(route, 'cats')}}">
               <section data-route="cats">
 
                 <two-columns-grid column-width="396" gutter="8">
-                  <template is="dom-repeat" items="{{cats.items.item}}" as="cat">
+                  <template is="dom-repeat" items="{{cats}}" as="cat">
                     <a is="girl-thumb" class="article-headline" girl="{{cat}}"
                           href="/cats/{{cat.desertionNo}}/"></a>
                   </template>
                 </two-columns-grid>
+
+                <girl-button count="{{catsNo}}"></girl-button>
 
               </section>
             </template>
@@ -110,25 +102,28 @@
               <section data-route="dogs">
 
                 <two-columns-grid column-width="396" gutter="8">
-                  <template is="dom-repeat" items="{{dogs.items.item}}" as="dog">
+                  <template is="dom-repeat" items="{{dogs}}" as="dog">
                     <a is="girl-thumb" class="article-headline" girl="{{dog}}"
                           href="/dogs/{{dog.desertionNo}}/"></a>
                   </template>
                 </two-columns-grid>
 
+                <girl-button count="{{dogsNo}}"></girl-button>
+
               </section>
             </template>
-           -->
 
             <template is="dom-if" if="{{_equal(route, 'etcs')}}">
               <section data-route="etcs">
 
                 <two-columns-grid column-width="396" gutter="8">
-                  <template is="dom-repeat" items="{{etcs.items.item}}" as="etc">
+                  <template is="dom-repeat" items="{{etcs}}" as="etc">
                     <a is="girl-thumb" class="article-headline" girl="{{etc}}"
                           href="/etcs/{{etc.desertionNo}}/"></a>
                   </template>
                 </two-columns-grid>
+
+                <girl-button count="{{etcsNo}}"></girl-button>
 
               </section>
             </template>
@@ -149,37 +144,29 @@
 
     </paper-drawer-panel>
 
-    <iron-ajax
-      auto
-      url="http://localhost:3000/api/recent"
-      handle-as="json"
-      with-credentials
-      content-type="application/json"
-      last-response="{{recent}}"></iron-ajax>
+    <girl-ajax up-kind="all"
+               num-of-rows="10"
+               subtract-day="10"
+               page-no="{{todayNo}}"
+               girl-list="{{today}}"></girl-ajax>
 
-    <!-- <iron-ajax
-      auto
-      url="http://localhost:3000/api/cats"
-      handle-as="json"
-      with-credentials
-      content-type="application/json"
-      last-response="{{cats}}"></iron-ajax>
+    <girl-ajax up-kind="cat"
+               num-of-rows="10"
+               subtract-day="10"
+               page-no="{{catsNo}}"
+               girl-list="{{cats}}"></girl-ajax>
 
-    <iron-ajax
-      auto
-      url="http://localhost:3000/api/dogs"
-      handle-as="json"
-      with-credentials
-      content-type="application/json"
-      last-response="{{dogs}}"></iron-ajax>
+    <girl-ajax up-kind="dog"
+               num-of-rows="10"
+               subtract-day="10"
+               page-no="{{dogsNo}}"
+               girl-list="{{dogs}}"></girl-ajax>
 
-    <iron-ajax
-      auto
-      url="http://localhost:3000/api/etcs"
-      handle-as="json"
-      with-credentials
-      content-type="application/json"
-      last-response="{{etcs}}"></iron-ajax> -->
+    <girl-ajax up-kind="etc"
+               num-of-rows="10"
+               subtract-day="10"
+               page-no="{{etcsNo}}"
+               girl-list="{{etcs}}"></girl-ajax>
 
   </template>
 

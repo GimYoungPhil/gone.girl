@@ -1,0 +1,96 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+
+<script src="../../bower_components/moment/min/moment.min.js"></script>
+<script src="../../bower_components/underscore/underscore-min.js"></script>
+
+<dom-module id="girl-ajax">
+  <template>
+    <iron-ajax
+      auto
+      url="http://localhost:3000/api/abandonment"
+      handle-as="json"
+      with-credentials
+      params="{{girlParams}}"
+      on-response="handleResponse"
+      content-type="application/json"
+      last-response="{{response}}"></iron-ajax>
+  </template>
+  <script>
+    Polymer({
+
+      is: 'girl-ajax',
+
+      properties: {
+
+        girlList: {
+          type: Array,
+          notify: true,
+          value: function() {
+            return [];
+          }
+        },
+
+        upKind: {
+          type: String,
+          value: 'all'
+        },
+
+        numOfRows: {
+          type: Number,
+          value: 10
+        },
+
+        pageNo: {
+          type: Number,
+          observer: '_pageNoChanged'
+        },
+
+        subtractDay: {
+          type: Number,
+          value: 10
+        },
+
+        girlParams: {
+          type: Object,
+          value: function() {
+            return {
+              pageNo:         1,
+              upkind:     'all',
+              bgnde: '20151101',
+              endde: '20151111',
+              numOfRows:      5
+            }
+          }
+        }
+      },
+
+      ready: function() {
+        var now = moment();
+        var endde = now.format('YYYYMMDD');
+        var bgnde = now.subtract(this.subtractDay, 'day').format('YYYYMMDD');
+
+        this.set('girlParams.upkind', this.upKind);
+        this.set('girlParams.numOfRows', this.numOfRows);
+        this.set('girlParams.pageNo', this.pageNo);
+        this.set('girlParams.bgnde', bgnde);
+        this.set('girlParams.endde', endde);
+      },
+
+      _pageNoChanged: function(newValue, oldValue) {
+        if (newValue > oldValue) {
+          this.set('girlParams.pageNo', newValue);
+        }
+      },
+
+      handleResponse: function(event, element) {
+        // var resultList = event.detail.response;
+        _.each(this.response.items.item, function(girl) {
+          this.push('girlList', girl);
+        }, this);
+
+      }
+
+    });
+  </script>
+</dom-module>
