@@ -21,7 +21,7 @@
 
   <template is="dom-bind" id="app">
 
-    <paper-drawer-panel id="paperDrawerPanel">
+    <paper-drawer-panel id="paperDrawerPanel"  responsive-width="1280px">
 
       <paper-header-panel drawer mode="seamed">
 
@@ -145,25 +145,25 @@
     </paper-drawer-panel>
 
     <girl-ajax up-kind="all"
-               num-of-rows="10"
+               num-of-rows="15"
                subtract-day="10"
                page-no="{{todayNo}}"
                girl-list="{{today}}"></girl-ajax>
 
     <girl-ajax up-kind="cat"
-               num-of-rows="10"
+               num-of-rows="15"
                subtract-day="10"
                page-no="{{catsNo}}"
                girl-list="{{cats}}"></girl-ajax>
 
     <girl-ajax up-kind="dog"
-               num-of-rows="10"
+               num-of-rows="15"
                subtract-day="10"
                page-no="{{dogsNo}}"
                girl-list="{{dogs}}"></girl-ajax>
 
     <girl-ajax up-kind="etc"
-               num-of-rows="10"
+               num-of-rows="15"
                subtract-day="10"
                page-no="{{etcsNo}}"
                girl-list="{{etcs}}"></girl-ajax>
