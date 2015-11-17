@@ -4,6 +4,7 @@
 <link rel="import" href="../../bower_components/iron-icon/iron-icon.html">
 <link rel="import" href="../../bower_components/paper-fab/paper-fab.html">
 <link rel="import" href="../../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../../bower_components/paper-styles/shadow.html">
 
 <link rel="import" href="../app-icons.html">
 
@@ -13,6 +14,7 @@
 
     <style>
       :host {
+        @apply(--shadow-elevation-3dp);
         display: block;
         min-height: 600px;
         visibility: hidden;
@@ -90,9 +92,11 @@
     <header>
       <div class="title">{{girl.kindCd}}</div>
       <div>{{girl.age}}</div>
+      <!--
       <a href="http://" target="_blank">
         <paper-fab icon="app:googleplus-reshare"></paper-fab>
       </a>
+      -->
     </header>
 
 

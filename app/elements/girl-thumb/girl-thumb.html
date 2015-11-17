@@ -2,6 +2,9 @@
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../bower_components/iron-image/iron-image.html">
 <link rel="import" href="../../bower_components/paper-styles/shadow.html">
+<link rel="import" href="../../bower_components/paper-progress/paper-progress.html">
+
+<script src="../../bower_components/moment/min/moment.min.js"></script>
 
 <dom-module id="girl-thumb">
 
@@ -20,15 +23,21 @@
         @apply(--layout-flex);
         background-color: #dadada;
       }
+
       .title {
-        height: 64px;
+        height: 50px;
         @apply(--layout-horizontal);
         @apply(--layout-center-center);
-        padding: 0 8px;
+        padding: 0;
         text-align: center;
         letter-spacing: 0.8px;
         line-height: 1.15;
-        color: var(--primary-text-color);
+        color: var(--secondary-text-color);
+      }
+      .kind {
+        position: relative;
+        width: 100%;
+        z-index: 2;
       }
       .age {
         padding-left: 12px;
@@ -37,10 +46,24 @@
         letter-spacing: 0.4px;
         white-space: nowrap;
       }
+
+      paper-progress {
+        position: relative;
+        width: 100%;
+        --paper-progress-active-color: var(--accent-color);
+        --paper-progress-container-color: rgba(255, 255, 255, .75);
+      }
+
     </style>
 
     <iron-image class="image" preload fade sizing="cover" src="{{girl.popfile}}"></iron-image>
-    <div class="title"><span>{{girl.kindCd}}<span class="age">{{girl.age}}</span></span></div>
+      <paper-progress id="progress"></paper-progress>
+    <div class="title">
+      <span class="kind">
+        {{girl.kindCd}}
+        <span class="age">{{girl.processState}}</span>
+      </span>
+    </div>
 
   </template>
 
@@ -50,6 +73,19 @@
       extends: 'a',
       properties: {
         girl: Object
+      },
+
+      ready: function() {
+
+        var toDay = moment().dayOfYear();
+        var stDay = moment(this.girl.noticeSdt, 'YYYYMMDD').dayOfYear();
+        var enDay = moment(this.girl.noticeEdt, 'YYYYMMDD').dayOfYear();
+        var range = enDay - stDay + 1;
+        var process = toDay - stDay + 1;
+        var state = this.girl.processState.indexOf('종료');
+
+        this.$.progress.max = range;
+        this.$.progress.value = (state === -1) ? process : range;
       }
     });
   </script>
