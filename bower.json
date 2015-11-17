@@ -29,6 +29,8 @@
     "underscore": "~1.8.3",
     "moment": "~2.10.6",
     "moment-range": "~2.0.3",
-    "paper-progress": "PolymerElements/paper-progress#~1.0.7"
+    "paper-progress": "PolymerElements/paper-progress#~1.0.7",
+    "google-chart": "GoogleWebComponents/google-chart#~1.0.4",
+    "firebase-element": "GoogleWebComponents/firebase-element#~1.0.8"
   }
 }

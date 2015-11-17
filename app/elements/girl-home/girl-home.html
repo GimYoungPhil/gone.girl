@@ -1,0 +1,53 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-material/paper-material.html">
+<link rel="import" href="../../bower_components/google-chart/google-chart.html">
+<link rel="import" href="../../bower_components/firebase-element/firebase-document.html">
+
+
+<dom-module id="girl-home">
+  <template>
+    <style>
+      :host {
+        display: block;
+        min-height: 600px;
+        max-width: 736px;
+        margin: 64px auto;
+        background-color: #fff;
+      }
+
+      google-chart {
+        width: 100%;
+      }
+    </style>
+
+    <paper-material elevation="1">
+      <h2 class="page-title">나를 찾아줘</h2>
+      <p>This is the contact section</p>
+
+      <google-chart
+        type='column'
+        options="{{fire.one.options}}"
+        data="{{fire.one.data}}">
+      </google-chart>
+
+      <google-chart
+        type="pie"
+        id="selection-chart"
+        options="{{fire.two.options}}"
+        data="{{fire.two.data}}">
+      </google-chart>
+
+      <firebase-document
+        location="https://gonegirl.firebaseio.com"
+        data="{{fire}}"></firebase-document>
+
+    </paper-material>
+
+  </template>
+
+  <script>
+    Polymer({
+      is: 'girl-home'
+    })
+  </script>
+</dom-module>

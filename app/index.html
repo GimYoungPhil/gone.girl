@@ -71,14 +71,7 @@
             <template is="dom-if" if="{{_equal(route, 'today')}}">
               <section data-route="today">
 
-                <two-columns-grid column-width="396" gutter="8">
-                  <template is="dom-repeat" items="{{today}}" as="pet">
-                    <a is="girl-thumb" class="article-headline" girl="{{pet}}"
-                          href="/today/{{pet.desertionNo}}/"></a>
-                  </template>
-                </two-columns-grid>
-
-                <girl-button count="{{todayNo}}"></girl-button>
+                <girl-home></girl-home>
 
               </section>
             </template>
