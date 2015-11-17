@@ -12,7 +12,7 @@
     }
 
     // Routes
-    page('/', function() {
+    page('/', scrollToTop, function() {
       app.route = 'today';
     });
 
@@ -20,11 +20,11 @@
       app.route = 'cats';
     });
 
-    page('/dogs', function() {
+    page('/dogs', scrollToTop, function() {
       app.route = 'dogs';
     });
 
-    page('/etcs', function() {
+    page('/etcs', scrollToTop, function() {
       app.route = 'etcs';
     });
 
