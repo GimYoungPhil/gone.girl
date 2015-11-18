@@ -30,24 +30,24 @@
         </paper-toolbar>
 
         <paper-menu class="list" attr-for-selected="data-route" selected="[[route]]">
-          <a data-route="today" href="/" on-click="onDataRouteClick">
+          <a data-route="home" href="/" on-click="onDataRouteClick">
             <iron-icon icon="home"></iron-icon>
-            <span>오늘!</span>
+            <span>MISSING</span>
           </a>
 
           <a data-route="cats" href="/cats" on-click="onDataRouteClick">
             <iron-icon icon="info"></iron-icon>
-            <span>야옹</span>
+            <span>CAT</span>
           </a>
 
           <a data-route="dogs" href="/dogs" on-click="onDataRouteClick">
             <iron-icon icon="info"></iron-icon>
-            <span>멍멍</span>
+            <span>DOG</span>
           </a>
 
           <a data-route="ets" href="/etcs" on-click="onDataRouteClick">
             <iron-icon icon="info"></iron-icon>
-            <span>기타</span>
+            <span>PET</span>
           </a>
         </paper-menu>
 
@@ -68,8 +68,8 @@
 
           <iron-pages attr-for-selected="data-route" selected="{{route}}">
 
-            <template is="dom-if" if="{{_equal(route, 'today')}}">
-              <section data-route="today">
+            <template is="dom-if" if="{{_equal(route, 'home')}}">
+              <section data-route="home">
 
                 <girl-home></girl-home>
 
@@ -136,12 +136,6 @@
       </paper-header-panel>
 
     </paper-drawer-panel>
-
-    <girl-ajax up-kind="all"
-               num-of-rows="15"
-               subtract-day="0"
-               page-no="{{todayNo}}"
-               girl-list="{{today}}"></girl-ajax>
 
     <girl-ajax up-kind="cat"
                num-of-rows="15"

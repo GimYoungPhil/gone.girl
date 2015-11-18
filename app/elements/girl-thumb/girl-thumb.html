@@ -32,19 +32,20 @@
         text-align: center;
         letter-spacing: 0.8px;
         line-height: 1.15;
-        color: var(--secondary-text-color);
+        color: var(--dark-primary-color);
       }
-      .kind {
+      .processState {
         position: relative;
         width: 100%;
-        z-index: 2;
+        white-space: nowrap;
       }
-      .age {
+      .specialMark {
         padding-left: 12px;
         font-size: 11px;
         color: #999;
         letter-spacing: 0.4px;
         white-space: nowrap;
+        text-overflow: ellipsis;
       }
 
       paper-progress {
@@ -56,12 +57,12 @@
 
     </style>
 
-    <iron-image class="image" preload fade sizing="cover" src="{{girl.popfile}}"></iron-image>
+    <iron-image id="image" class="image" preload fade sizing="cover"></iron-image>
       <paper-progress id="progress"></paper-progress>
     <div class="title">
-      <span class="kind">
-        {{girl.kindCd}}
-        <span class="age">{{girl.processState}}</span>
+      <span class="processState">
+        {{girl.processState}}
+        <span class="specialMark">{{displaySpecialMark(girl.specialMark)}}</span>
       </span>
     </div>
 
@@ -70,13 +71,14 @@
   <script>
     Polymer({
       is: 'girl-thumb',
+
       extends: 'a',
+
       properties: {
         girl: Object
       },
 
       ready: function() {
-
         var toDay = moment().dayOfYear();
         var stDay = moment(this.girl.noticeSdt, 'YYYYMMDD').dayOfYear();
         var enDay = moment(this.girl.noticeEdt, 'YYYYMMDD').dayOfYear();
@@ -86,6 +88,21 @@
 
         this.$.progress.max = range;
         this.$.progress.value = (state === -1) ? process : range;
+
+        if (state === -1) {
+          this.$.image.src = this.girl.popfile;
+        } else {
+          // this.$.image.src = '/images/flower.png';
+        }
+      },
+
+      displaySpecialMark: function(specialMark) {
+        var maxLength = 15;
+        if (specialMark.length > maxLength) {
+          return specialMark.slice(0,  maxLength) + '...';
+        } else {
+          return specialMark;
+        }
       }
     });
   </script>
