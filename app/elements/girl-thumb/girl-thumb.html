@@ -69,6 +69,8 @@
   </template>
 
   <script>
+
+    var END_STATE = ['종료(안락사)', '종료(자연사)'];
     Polymer({
       is: 'girl-thumb',
 
@@ -79,20 +81,20 @@
       },
 
       ready: function() {
-        var toDay = moment().dayOfYear();
-        var stDay = moment(this.girl.noticeSdt, 'YYYYMMDD').dayOfYear();
-        var enDay = moment(this.girl.noticeEdt, 'YYYYMMDD').dayOfYear();
-        var range = enDay - stDay + 1;
-        var process = toDay - stDay + 1;
-        var state = this.girl.processState.indexOf('종료');
+        var today = moment().dayOfYear();
+        var startDay = moment(this.girl.noticeSdt, 'YYYYMMDD').dayOfYear();
+        var endDay = moment(this.girl.noticeEdt, 'YYYYMMDD').dayOfYear();
+        var maxRange = endDay - startDay + 1;
+        var passDay = today - startDay + 1;
+        var isDead = (this.girl.processState.indexOf('종료(안락사)') === 0) ||
+                     (this.girl.processState.indexOf('종료(자연사)') === 0);
+        var isEnd = (this.girl.processState.indexOf('종료') === 0);
 
-        this.$.progress.max = range;
-        this.$.progress.value = (state === -1) ? process : range;
+        this.$.progress.max = maxRange;
+        this.$.progress.value = isEnd ? maxRange : passDay;
 
-        if (state === -1) {
+        if (!isDead) {
           this.$.image.src = this.girl.popfile;
-        } else {
-          // this.$.image.src = '/images/flower.png';
         }
       },
 
