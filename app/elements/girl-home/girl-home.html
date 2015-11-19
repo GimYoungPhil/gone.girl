@@ -15,30 +15,46 @@
         background-color: #fff;
       }
 
+      .content {
+        padding: 30px;
+      }
+
       google-chart {
         width: 100%;
       }
     </style>
 
     <paper-material elevation="1">
-      <h2 class="page-title">나를 찾아줘</h2>
-      <p>This is the contact section</p>
+      <div class="content">
+        <h2 class="page-title">
+          나를 찾아줘!
+        </h2>
+        <p>
+          유기동물의 실태를 알리고 분양을 알리기 위한 사이트입니다.
+        </p>
+        <p>
+          2014년 발생한 유기동물 사례 중에 시설수용규모, 질병 등으로
+          불가피한 사유로 처리되는 안락사되는 동물은 18.4천 마리(22.7%) 입니다.
+        </p>
+      </div>
 
       <google-chart
         type='column'
-        options="{{fire.one.options}}"
+        options='{"title":"유기동물 발생현황 (마리)"}'
         data="{{fire.one.data}}">
       </google-chart>
 
       <google-chart
         type="pie"
-        options="{{fire.two.options}}"
+        options='{"title":"유기동물 처리현황 2014 (마리)"}'
         data="{{fire.two.data}}">
       </google-chart>
 
       <firebase-document
         location="https://gonegirl.firebaseio.com"
         data="{{fire}}"></firebase-document>
+
+      <p>자료 출처 - 동물보호관리시스템</p>
 
     </paper-material>
 
