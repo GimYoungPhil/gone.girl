@@ -4,7 +4,7 @@
 <link rel="import" href="../../bower_components/firebase-element/firebase-document.html">
 
 
-<dom-module id="girl-home">
+<dom-module id="girl-missing">
   <template>
     <style>
       :host {
@@ -17,6 +17,11 @@
 
       .content {
         padding: 30px;
+      }
+
+      .notice {
+        padding: 30px;
+        text-align: right;
       }
 
       google-chart {
@@ -54,7 +59,9 @@
         location="https://gonegirl.firebaseio.com"
         data="{{fire}}"></firebase-document>
 
-      <p>자료 출처 - 동물보호관리시스템</p>
+      <div class="notice">
+        <p>자료 출처 - 동물보호관리시스템</p>
+      </div>
 
     </paper-material>
 
@@ -62,7 +69,7 @@
 
   <script>
     Polymer({
-      is: 'girl-home'
+      is: 'girl-missing'
     })
   </script>
 </dom-module>

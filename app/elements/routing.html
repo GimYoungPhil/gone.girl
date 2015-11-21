@@ -13,23 +13,19 @@
 
     // Routes
     page('/', scrollToTop, function() {
-      app.route = 'home';
-      app.title = '홈';
+      app.route = 'missing';
     });
 
     page('/cats', function() {
       app.route = 'cats';
-      app.title = '야옹';
     });
 
     page('/dogs', scrollToTop, function() {
       app.route = 'dogs';
-      app.title = '멍멍';
     });
 
-    page('/etcs', scrollToTop, function() {
-      app.route = 'etcs';
-      app.title = '귀여워';
+    page('/pets', scrollToTop, function() {
+      app.route = 'pets';
     });
 
     page('/:upkind/:desertionNo', scrollToTop, function(data) {

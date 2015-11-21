@@ -18,60 +18,68 @@
 
 <body unresolved class="fullbleed layout vertical">
 
-
   <template is="dom-bind" id="app">
 
     <paper-drawer-panel id="paperDrawerPanel"  responsive-width="1280px">
 
-      <paper-header-panel drawer mode="seamed">
+      <paper-scroll-header-panel drawer fixed>
 
-        <paper-toolbar id="drawerToolbar" class="medium-tall">
-          <div class="title bottom paper-font-title">나를 찾아줘</div>
+        <paper-toolbar id="drawerToolbar">
+          <div class="paper-font-title">나를 찾아줘</div>
         </paper-toolbar>
 
         <paper-menu class="list" attr-for-selected="data-route" selected="[[route]]">
-          <a data-route="home" href="/" on-click="onDataRouteClick">
-            <iron-icon icon="home"></iron-icon>
+          <a data-route="missing" href="/" on-click="onDataRouteClick">
+            <iron-icon icon="announcement"></iron-icon>
             <span>MISSING</span>
           </a>
 
           <a data-route="cats" href="/cats" on-click="onDataRouteClick">
             <iron-icon icon="info"></iron-icon>
-            <span>CATs</span>
+            <span>CATS</span>
           </a>
 
           <a data-route="dogs" href="/dogs" on-click="onDataRouteClick">
             <iron-icon icon="info"></iron-icon>
-            <span>DOGs</span>
+            <span>DOGS</span>
           </a>
 
-          <a data-route="ets" href="/etcs" on-click="onDataRouteClick">
+          <a data-route="pets" href="/pets" on-click="onDataRouteClick">
             <iron-icon icon="info"></iron-icon>
-            <span>PETs</span>
+            <span>PETS</span>
           </a>
         </paper-menu>
 
-      </paper-header-panel>
+      </paper-scroll-header-panel>
 
-      <paper-header-panel main mode="waterfall">
+      <paper-scroll-header-panel main condenses keep-condensed-header>
 
-        <paper-toolbar id="mainToolbar" class="medium-tall">
-          <paper-icon-button icon="menu" paper-drawer-toggle hidden$="{{_equal(route,'detail')}}"></paper-icon-button>
-          <a href="/{{upkind}}"  hidden$="{{!_equal(route, 'detail')}}">
+        <paper-toolbar id="mainToolbar" class="tall">
+          <paper-icon-button
+            icon="menu"
+            hidden$="{{_equal(route,'detail')}}"
+            paper-drawer-toggle></paper-icon-button>
+          <a href="/{{upkind}}" hidden$="{{!_equal(route, 'detail')}}">
             <paper-icon-button icon="arrow-back"></paper-icon-button>
           </a>
 
-          <div class="bottom title paper-font-display3">{{title}}</div>
+          <div class="middle middle-container center horizontal layout">
+            <div class="app-name">{{route}}</div>
+          </div>
+
+          <div class="bottom bottom-container center horizontal layout">
+            <div class="bottom-title paper-font-subhead">나를 찾아줘</div>
+          </div>
         </paper-toolbar>
 
-        <div class="content fit">
+        <div class="content">
 
           <iron-pages attr-for-selected="data-route" selected="{{route}}">
 
-            <template is="dom-if" if="{{_equal(route, 'home')}}">
-              <section data-route="home">
+            <template is="dom-if" if="{{_equal(route, 'missing')}}">
+              <section data-route="missing">
 
-                <girl-home></girl-home>
+                <girl-missing></girl-missing>
 
               </section>
             </template>
@@ -106,17 +114,17 @@
               </section>
             </template>
 
-            <template is="dom-if" if="{{_equal(route, 'etcs')}}">
-              <section data-route="etcs">
+            <template is="dom-if" if="{{_equal(route, 'pets')}}">
+              <section data-route="pets">
 
                 <two-columns-grid column-width="396" gutter="8">
-                  <template is="dom-repeat" items="{{etcs}}" as="etc">
-                    <a is="girl-thumb" class="article-headline" girl="{{etc}}"
-                          href="/etcs/{{etc.desertionNo}}/"></a>
+                  <template is="dom-repeat" items="{{pets}}" as="pet">
+                    <a is="girl-thumb" class="article-headline" girl="{{pet}}"
+                          href="/pets/{{pet.desertionNo}}/"></a>
                   </template>
                 </two-columns-grid>
 
-                <girl-button count="{{etcsNo}}"></girl-button>
+                <girl-button count="{{petsNo}}"></girl-button>
 
               </section>
             </template>
@@ -133,7 +141,7 @@
 
         </div>
 
-      </paper-header-panel>
+      </paper-scroll-header-panel>
 
     </paper-drawer-panel>
 
@@ -152,8 +160,8 @@
     <girl-ajax up-kind="etc"
                num-of-rows="15"
                subtract-day="30"
-               page-no="{{etcsNo}}"
-               girl-list="{{etcs}}"></girl-ajax>
+               page-no="{{petsNo}}"
+               girl-list="{{pets}}"></girl-ajax>
 
   </template>
 
