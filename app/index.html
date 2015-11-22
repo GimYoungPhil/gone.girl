@@ -20,7 +20,7 @@
 
   <template is="dom-bind" id="app">
 
-    <girl-scrollpos-control selected="{{route}}" reset="{{_equal(route, 'detail')}}" top="{{scrollTop}}"></girl-scrollpos-control>
+    <girl-scrollpos-control selected="/{{route}}" reset="{{_equal(route, 'detail')}}" top="{{scrollTop}}"></girl-scrollpos-control>
 
     <paper-drawer-panel id="paperDrawerPanel"  responsive-width="1280px">
 
@@ -31,22 +31,22 @@
         </paper-toolbar>
 
         <paper-menu class="list" attr-for-selected="data-route" selected="[[route]]">
-          <a data-route="missing" href="" on-click="onDataRouteClick">
+          <a data-route="missing" href="/" on-click="onDataRouteClick">
             <iron-icon icon="announcement"></iron-icon>
             <span>MISSING</span>
           </a>
 
-          <a data-route="cats" href="cats" on-click="onDataRouteClick">
+          <a data-route="cats" href="/cats" on-click="onDataRouteClick">
             <iron-icon icon="info"></iron-icon>
             <span>CATS</span>
           </a>
 
-          <a data-route="dogs" href="dogs" on-click="onDataRouteClick">
+          <a data-route="dogs" href="/dogs" on-click="onDataRouteClick">
             <iron-icon icon="info"></iron-icon>
             <span>DOGS</span>
           </a>
 
-          <a data-route="pets" href="pets" on-click="onDataRouteClick">
+          <a data-route="pets" href="/pets" on-click="onDataRouteClick">
             <iron-icon icon="info"></iron-icon>
             <span>PETS</span>
           </a>
@@ -61,7 +61,7 @@
             icon="menu"
             hidden$="{{_equal(route,'detail')}}"
             paper-drawer-toggle></paper-icon-button>
-          <a href="{{upkind}}" hidden$="{{!_equal(route, 'detail')}}">
+          <a href="/{{upkind}}" hidden$="{{!_equal(route, 'detail')}}">
             <paper-icon-button icon="arrow-back"></paper-icon-button>
           </a>
 
@@ -92,7 +92,7 @@
                 <two-columns-grid column-width="396" gutter="8">
                   <template is="dom-repeat" items="{{cats}}" as="cat">
                     <a is="girl-thumb" class="article-headline" girl="{{cat}}"
-                          href="cats/{{cat.desertionNo}}/"></a>
+                          href="/cats/{{cat.desertionNo}}/"></a>
                   </template>
                 </two-columns-grid>
 
@@ -107,7 +107,7 @@
                 <two-columns-grid column-width="396" gutter="8">
                   <template is="dom-repeat" items="{{dogs}}" as="dog">
                     <a is="girl-thumb" class="article-headline" girl="{{dog}}"
-                          href="dogs/{{dog.desertionNo}}/"></a>
+                          href="/dogs/{{dog.desertionNo}}/"></a>
                   </template>
                 </two-columns-grid>
 
@@ -122,7 +122,7 @@
                 <two-columns-grid column-width="396" gutter="8">
                   <template is="dom-repeat" items="{{pets}}" as="pet">
                     <a is="girl-thumb" class="article-headline" girl="{{pet}}"
-                          href="pets/{{pet.desertionNo}}/"></a>
+                          href="/pets/{{pet.desertionNo}}/"></a>
                   </template>
                 </two-columns-grid>
 
