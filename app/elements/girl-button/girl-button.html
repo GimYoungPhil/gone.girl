@@ -9,26 +9,27 @@
 <dom-module id="girl-button">
   <template>
     <style>
+    :host {
+      @apply(--layout-horizontal);
+      @apply(--layout-end-justified);
+      max-width: 808px;
+      margin: 20px auto;
+    }
+
+    paper-button {
+      margin: 0;
+    }
+
+    paper-button[raised].colorful {
+      background: var(--accent-color);
+      color: #fff;
+    }
+
+    @media (max-width: 600px) {
       :host {
-        @apply(--layout-horizontal);
-        @apply(--layout-end-justified);
-        margin: 20px 8px;
+        padding-right: 8px;
       }
-
-      paper-button {
-        margin: 0;
-      }
-
-      paper-button[raised].colorful {
-        background: var(--accent-color);
-        color: #fff;
-      }
-/*
-      @media (max-width: 600px) {
-        :host {
-          padding-right: 8px;
-        }
-      }*/
+    }
 
     </style>
 
