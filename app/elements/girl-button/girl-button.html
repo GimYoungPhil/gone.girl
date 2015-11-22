@@ -1,4 +1,5 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../bower_components/iron-icon/iron-icon.html">
 <link rel="import" href="../../bower_components/paper-styles/color.html">
 <link rel="import" href="../../bower_components/paper-button/paper-button.html">
@@ -9,23 +10,25 @@
   <template>
     <style>
       :host {
-        position: absolute;
-        right: 0;
-        padding-top: 20px;
-        padding-right: 62px;
-        padding-bottom: 20px;
+        @apply(--layout-horizontal);
+        @apply(--layout-end-justified);
+        margin: 20px 8px;
+      }
+
+      paper-button {
+        margin: 0;
       }
 
       paper-button[raised].colorful {
         background: var(--accent-color);
         color: #fff;
       }
-
+/*
       @media (max-width: 600px) {
         :host {
           padding-right: 8px;
         }
-      }
+      }*/
 
     </style>
 

@@ -8,7 +8,7 @@
   <template>
     <iron-ajax
       auto
-      url="http://localhost:3000/api/abandonment"
+      url="{{url}}"
       handle-as="json"
       with-credentials
       params="{{girlParams}}"
@@ -24,7 +24,9 @@
       properties: {
 
         url: {
-          type: String
+          type: String,
+          value: 'http://localhost:3000/api/abandonment'
+          // value: 'https://gone-girl-back-end.herokuapp.com/api/abandonment'
         },
 
         girlList: {

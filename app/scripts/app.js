@@ -15,6 +15,10 @@
     // imports are loaded and elements have been registered
   });
 
+  addEventListener('content-scroll', function(e) {
+    app.scrollTop = e.detail.target.scrollTop;
+  });
+
 
   addEventListener('paper-header-transform', function(e) {
     var appName = document.querySelector('#mainToolbar .app-name');

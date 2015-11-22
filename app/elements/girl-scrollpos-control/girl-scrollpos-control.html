@@ -1,0 +1,57 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="girl-scrollpos-control">
+
+  <script>
+    Polymer({
+      is: 'girl-scrollpos-control',
+      properties: {
+        /**
+         * The selected page.
+         */
+        selected: {
+          type: String,
+          observer: '_selectedChanged'
+        },
+        /**
+         * Reset the scroll position to 0.
+         */
+        reset: {
+          type: Boolean,
+          value: false
+        },
+
+        top: {
+          type: Number
+        }
+
+      },
+
+      created: function() {
+        this._scrollposMap = {};
+      },
+
+
+      _selectedChanged: function(selected, old) {
+        if (old != null) {
+          this._scrollposMap[old] = {y: this.top};
+        }
+        var pos = this._scrollposMap[selected];
+        if (pos != null && !this.reset) {
+          this._scrollTo(pos.y);
+        } else {
+          this._scrollTo(0);
+        }
+      },
+
+      _scrollTo: function(y) {
+        var mainContainer = document.getElementById('mainContainer');
+
+        this.async(function() {
+          mainContainer.scrollTop = y;
+        }, 1);
+      }
+    });
+  </script>
+
+</dom-module>

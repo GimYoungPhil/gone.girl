@@ -11,24 +11,26 @@
       next();
     }
 
+    page.base(location.pathname);
+
     // Routes
-    page('/', scrollToTop, function() {
+    page('', function() {
       app.route = 'missing';
     });
 
-    page('/cats', function() {
+    page('cats', function() {
       app.route = 'cats';
     });
 
-    page('/dogs', scrollToTop, function() {
+    page('dogs', function() {
       app.route = 'dogs';
     });
 
-    page('/pets', scrollToTop, function() {
+    page('pets', function() {
       app.route = 'pets';
     });
 
-    page('/:upkind/:desertionNo', scrollToTop, function(data) {
+    page(':upkind/:desertionNo', function(data) {
       app.upkind = data.params.upkind;
       app.route = 'detail';
 
